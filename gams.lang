@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+ Credit to http://ubuntuforums.org/showthread.php?t=1502736
+ 
+-->
+<language id="gams" name="GAMS" version="2.0" _section="Source">
+  <metadata>
+    <property name="mimetypes">text/x-gams</property>
+    <property name="globs">*.gms</property>
+    <property name="line-comment-start">\*</property>
+  </metadata>
+ 
+  <styles>
+    <style id="comment" name="Comment" map-to="def:comment"/>
+    <style id="keyword" name="Keyword" map-to="def:keyword"/>
+    <style id="operator" name="Operator" map-to="def:operator"/>
+    <style id="math" name="math" map-to="def:string"/>
+    <style id="logic" name="logic" map-to="def:special-constant"/>
+    <style id="bracket" name="Bracket" map-to="def:operator"/>
+    <style id="float" name="Floating point number" map-to="def:floating-point"/>
+    <style id="decimal" name="Decimal number" map-to="def:decimal"/>
+    <style id="type" name="Type" map-to="def:type"/>
+  </styles>
+ 
+  <!--<default-regex-options case-sensitive="false"/>-->
+ 
+  <definitions>
+    <context id="gams" class="no-spell-check">
+      <include>
+        <context ref="comment"/>
+        <context ref="keyword"/>
+        <context ref="operator"/>
+        <context ref="math"/>
+        <context ref="logic"/>
+        <context ref="bracket"/>
+        <context ref="float"/>
+        <context ref="decimal"/>
+        <context ref="type"/>
+      </include>
+    </context>
+   
+    <context id="comment" style-ref="comment" end-at-line-end="true">
+      <start>^\*</start>
+      <end>\n</end>
+    </context>
+    <!--
+    #<context id="comment-multiline" style-ref="comment" class="comment" class-disabled="no-spell-check">
+    #  <start>\$ontext</start>
+    #  <end>\$offtext</end>
+    #  <include>
+    #    <context ref="def-comment"/>
+    #  </include>
+    #</context>
+    -->
+ 
+    <context id="keyword" style-ref="keyword">
+      <keyword>minimize</keyword>
+      <keyword>maximize</keyword>
+      <keyword>subject to</keyword>
+      <keyword>check</keyword>
+      <keyword>redeclare</keyword>
+      <keyword>print</keyword>
+      <keyword>printf</keyword>
+      <keyword>option</keyword>
+        <keyword>solve</keyword>
+        <keyword>reset</keyword>
+        <keyword>read</keyword>        
+        <keyword>within</keyword>
+        <keyword>cross</keyword>
+        <keyword>in</keyword>
+        <keyword>out</keyword>
+        <keyword>from</keyword>
+        <keyword>to</keyword>
+        <keyword>obj</keyword>
+        <keyword>net</keyword>
+        <keyword>net_out</keyword>
+      </context>
+ 
+      <context id="type" style-ref="type">
+        <keyword>variable</keyword>
+        <keyword>set</keyword>
+        <keyword>table</keyword>
+        <keyword>parameter</keyword>
+        <keyword>variables</keyword>
+        <keyword>sets</keyword>
+        <keyword>parameters</keyword>
+        <keyword>scalar</keyword>
+        <keyword>scalars</keyword>
+        <keyword>equation</keyword>
+        <keyword>equations</keyword>
+        <keyword>using</keyword>
+      </context>
+ 
+      <context id="math" style-ref="math">
+        <keyword>abs</keyword>
+        <keyword>acos</keyword>
+        <keyword>acosh</keyword>
+        <keyword>asin</keyword>
+        <keyword>ainsh</keyword>
+        <keyword>atan</keyword>
+        <keyword>atan2</keyword>
+        <keyword>atanh</keyword>
+        <keyword>cos</keyword>
+        <keyword>cosh</keyword>
+        <keyword>exp</keyword>
+        <keyword>log</keyword>
+        <keyword>log10</keyword>
+        <keyword>max</keyword>
+        <keyword>min</keyword>
+        <keyword>sin</keyword>
+        <keyword>sinh</keyword>
+        <keyword>sqrt</keyword>
+        <keyword>tan</keyword>
+        <keyword>tanh</keyword>
+        <keyword>sum</keyword>
+        <keyword>prod</keyword>
+        <keyword>\+</keyword>
+        <keyword>-</keyword>
+        <keyword>/</keyword>
+        <keyword>\*</keyword>
+      </context>
+ 
+      <context id="logic" style-ref="logic">
+        <keyword>if</keyword>
+        <keyword>then</keyword>
+        <keyword>else</keyword>
+        <keyword>or</keyword>
+        <keyword>exists</keyword>
+        <keyword>forall</keyword>
+        <keyword>for</keyword>
+        <keyword>and</keyword>
+        <keyword>not</keyword>
+        <keyword>in</keyword>
+        <keyword>not in</keyword>
+      </context>
+ 
+      <context id="operator" style-ref="operator" extend-parent="false">
+        <match>[:;\=&lt;&gt;]</match>
+      </context>
+ 
+      <context id="bracket" style-ref="bracket" extend-parent="false">
+        <match>[\{\}()\[\]]</match>
+      </context>
+ 
+      <context id="float" style-ref="float">
+        <match extended="true">
+          (?&lt;![\w\.])
+          ([0-9]+[Ee][+-]?[0-9]+ |
+           ([0-9]*\.[0-9]+ | [0-9]+\.[0-9]*)([Ee][+-]?[0-9]+)?)
+          (?![\w\.])
+        </match>
+      </context>
+
+      <context id="decimal" style-ref="decimal">
+        <match extended="true">
+          (?&lt;![\w\.])
+          [+-]?([1-9][0-9]*|0)
+          (?![\w\.])
+        </match>
+      </context>
+ 
+  </definitions>
+</language>
+
